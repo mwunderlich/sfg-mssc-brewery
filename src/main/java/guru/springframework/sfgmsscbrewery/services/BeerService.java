@@ -5,5 +5,11 @@ import guru.springframework.sfgmsscbrewery.web.model.BeerDto;
 import java.util.UUID;
 
 public interface BeerService {
-    public BeerDto getBeerById(UUID beerId);
+    BeerDto getBeerById(UUID beerId);
+
+    BeerDto saveNewBeer(BeerDto beerDto);
+
+    void updateBeer(UUID beerId, BeerDto beerDto);
+
+    void deleteBeerById(UUID beerId);
 }

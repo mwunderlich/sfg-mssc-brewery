@@ -3,8 +3,9 @@
  */
 package guru.springframework.sfgmsscbrewery.web.controller;
 
-import guru.springframework.sfgmsscbrewery.services.BeerService;
+import guru.springframework.sfgmsscbrewery.services.CustomerService;
 import guru.springframework.sfgmsscbrewery.web.model.BeerDto;
+import guru.springframework.sfgmsscbrewery.web.model.Customer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,43 +27,43 @@ import java.util.UUID;
  * @author Martin Wunderlich
  */
 @RestController
-@RequestMapping("api/v1/beer")
-public class BeerController {
+@RequestMapping("api/v1/customer")
+public class CustomerController {
 
-    private final BeerService beerService;
+    private final CustomerService customerService;
 
-    public BeerController(BeerService beerService) {
-        this.beerService = beerService;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
-    @GetMapping({"/{beerId}"})
-    public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId) {
-        BeerDto beer = beerService.getBeerById(beerId);
-        return new ResponseEntity<>(beer, HttpStatus.OK);
+    @GetMapping({"/{customerId}"})
+    public ResponseEntity<Customer> getBeer(@PathVariable("customerId") UUID customerId) {
+        Customer customer = customerService.getCustomerById(customerId);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@RequestBody BeerDto beerDto) {
-        BeerDto savedBeer = beerService.saveNewBeer(beerDto);
+    public ResponseEntity handlePost(@RequestBody Customer customer) {
+        Customer savedCustomer = customerService.saveNewCustomer(customer);
 
         HttpHeaders headers = new HttpHeaders();
         // TODO: Add server name here to URL
-        headers.add("Location", "api/v1/beer/" + savedBeer.getId().toString());
+        headers.add("Location", "api/v1/customer/" + savedCustomer.getId().toString());
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
+    public ResponseEntity handleUpdate(@PathVariable("customerId") UUID customerId, @RequestBody Customer customer) {
 
-        beerService.updateBeer(beerId, beerDto);
+        customerService.updateCustomer(customerId, customer);
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping({"/{beerId}"})
+    @DeleteMapping({"/{customerId}"})
     @ResponseStatus(HttpStatus.OK)
-    public void deleteBeer(@PathVariable("beerId") UUID beerId) {
-        beerService.deleteBeerById(beerId);
+    public void deleteCustomer(@PathVariable("customerId") UUID customerId) {
+        customerService.deleteCustomerById(customerId);
     }
 }
