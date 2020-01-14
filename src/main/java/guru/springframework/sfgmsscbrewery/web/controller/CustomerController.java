@@ -4,7 +4,6 @@
 package guru.springframework.sfgmsscbrewery.web.controller;
 
 import guru.springframework.sfgmsscbrewery.services.CustomerService;
-import guru.springframework.sfgmsscbrewery.web.model.BeerDto;
 import guru.springframework.sfgmsscbrewery.web.model.Customer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -53,7 +52,7 @@ public class CustomerController {
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/{customerId}")
     public ResponseEntity handleUpdate(@PathVariable("customerId") UUID customerId, @RequestBody Customer customer) {
 
         customerService.updateCustomer(customerId, customer);

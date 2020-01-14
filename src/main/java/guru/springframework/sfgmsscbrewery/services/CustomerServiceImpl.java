@@ -4,7 +4,6 @@
 package guru.springframework.sfgmsscbrewery.services;
 
 import guru.springframework.sfgmsscbrewery.web.model.Customer;
-import guru.springframework.sfgmsscbrewery.web.model.Customer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
