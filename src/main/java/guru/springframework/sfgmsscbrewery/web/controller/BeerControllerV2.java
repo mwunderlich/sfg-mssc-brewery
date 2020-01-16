@@ -71,6 +71,7 @@ public class BeerControllerV2 {
         beerService.deleteBeerById(beerId);
     }
 
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<List> validationErrorHandler(ConstraintViolationException ex) {
         List<String> errors = new ArrayList<>(ex.getConstraintViolations().size());
