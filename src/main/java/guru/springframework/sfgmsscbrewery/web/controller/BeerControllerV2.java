@@ -8,21 +8,9 @@ import guru.springframework.sfgmsscbrewery.web.model.BeerDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -69,17 +57,5 @@ public class BeerControllerV2 {
     @ResponseStatus(HttpStatus.OK)
     public void deleteBeer(@PathVariable("beerId") UUID beerId) {
         beerService.deleteBeerById(beerId);
-    }
-
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<List> validationErrorHandler(ConstraintViolationException ex) {
-        List<String> errors = new ArrayList<>(ex.getConstraintViolations().size());
-
-        ex.getConstraintViolations().forEach(constraintViolation -> {
-            errors.add(constraintViolation.getPropertyPath() + " : " + constraintViolation.getMessage());
-        });
-
-        return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
     }
 }
