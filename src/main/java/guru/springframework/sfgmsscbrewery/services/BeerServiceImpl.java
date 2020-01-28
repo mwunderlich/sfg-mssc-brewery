@@ -1,6 +1,4 @@
-/*
- * Copyright (c) by censhare AG
- */
+
 package guru.springframework.sfgmsscbrewery.services;
 
 import guru.springframework.sfgmsscbrewery.web.model.BeerDto;

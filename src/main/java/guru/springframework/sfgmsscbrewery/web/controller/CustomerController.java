@@ -1,6 +1,3 @@
-/*
- * Copyright (c) by censhare AG
- */
 package guru.springframework.sfgmsscbrewery.web.controller;
 
 import guru.springframework.sfgmsscbrewery.services.CustomerService;
