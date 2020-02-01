@@ -1,7 +1,7 @@
 
 package guru.springframework.sfgmsscbrewery.services;
 
-import guru.springframework.sfgmsscbrewery.web.model.Customer;
+import guru.springframework.sfgmsscbrewery.web.model.CustomerDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,19 +16,19 @@ import java.util.UUID;
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Override
-    public Customer getCustomerById(UUID customerId) {
-        return Customer.builder().id(customerId)
+    public CustomerDto getCustomerById(UUID customerId) {
+        return CustomerDto.builder().id(customerId)
                 .customerName("Thirsty Me")
                 .build();
     }
 
     @Override
-    public Customer saveNewCustomer(Customer customer) {
-        return Customer.builder().id(UUID.randomUUID()).build();
+    public CustomerDto saveNewCustomer(CustomerDto customerDto) {
+        return CustomerDto.builder().id(UUID.randomUUID()).build();
     }
 
     @Override
-    public void updateCustomer(UUID customerId, Customer customer) {
+    public void updateCustomer(UUID customerId, CustomerDto customerDto) {
         //TODO Impl
     }
 

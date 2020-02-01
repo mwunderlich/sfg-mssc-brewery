@@ -1,15 +1,15 @@
 package guru.springframework.sfgmsscbrewery.services;
 
-import guru.springframework.sfgmsscbrewery.web.model.Customer;
+import guru.springframework.sfgmsscbrewery.web.model.CustomerDto;
 
 import java.util.UUID;
 
 public interface CustomerService {
-    Customer getCustomerById(UUID customerId);
+    CustomerDto getCustomerById(UUID customerId);
 
-    Customer saveNewCustomer(Customer customer);
+    CustomerDto saveNewCustomer(CustomerDto customerDto);
 
-    void updateCustomer(UUID customerId, Customer customer);
+    void updateCustomer(UUID customerId, CustomerDto customerDto);
 
     void deleteCustomerById(UUID customerId);
 }

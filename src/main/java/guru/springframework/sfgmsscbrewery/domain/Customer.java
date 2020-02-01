@@ -1,16 +1,14 @@
-package guru.springframework.sfgmsscbrewery.web.model;
+package guru.springframework.sfgmsscbrewery.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.UUID;
 
 /**
- * Plain customer POJO
+ * Plain customer POJO for persistence
  *
  * @author Martin Wunderlich
  */
@@ -21,7 +19,5 @@ import java.util.UUID;
 public class Customer {
 
     private UUID id;
-    @NotBlank
-    @Size(min = 3, max = 100)
     private String customerName;
 }
